@@ -6,4 +6,9 @@ target/
 .idea/
 .ipr
 
+# Eclipse
+.classpath
+.project
+.settings/
+
 .DS_Store

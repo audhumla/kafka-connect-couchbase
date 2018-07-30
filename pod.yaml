@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: "Pod"
+metadata:
+  name: couchbase-kafka-connector
+spec:
+  containers:
+    - name: couchbase-kafka-connector-test
+      image: dockerhub.rnd.amadeus.net:5000/couchbase-kafka-connector-test:latest
+    - env:
+      - name: COUCHBASE_NODES
+        value: cb-fares
+      - name: COUCHBASE_BUCKET
+        value: "travel-sample"
+      - name: KAFKA_TOPIC
+        value: "cb-connector-test"
+      - name: COUCHBASE_FROM_TO
+        value: "SAVED_OFFSET_OR_NOW"
+
+  
+
