@@ -8,18 +8,18 @@ spec:
       image: audhumla/couchbase-kafka-connect-test:test
       env:
         - name: COUCHBASE_NODES
-          value:  couchbase
+          value:  "couchbase"
         - name: COUCHBASE_BUCKET
-          value: "travel-sample"
+          value: travel-sample
         - name: KAFKA_TOPIC
-          value: "cb-connector-test"
+          value: cb-connector-test
         - name: COUCHBASE_FROM_TO
-          value: "SAVED_OFFSET_OR_NOW"
+          value: SAVED_OFFSET_OR_NOW
         - name: CONNECT_BOOTSTRAP_SERVERS
           value: my-cluster-kafka-bootstrap
         - name: CONNECT_REST_ADVERTISED_HOST_NAME
-          value: "kafka-couchbase-connector-test"
+          value: kafka-couchbase-connector-test
         - name: CONNECTOR_NAME
-          value: "couchbase-kafka-connector-test"
+          value: couchbase-kafka-connector-test
 
 
