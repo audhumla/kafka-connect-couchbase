@@ -3,7 +3,7 @@ FROM anapsix/alpine-java:jdk8
 # Install kafka
 
 ENV SCALA_VERSION="2.12" \
-    KAFKA_VERSION="0.10.2.1"
+    KAFKA_VERSION="1.1.0"
 ENV KAFKA_HOME=/opt/kafka_${SCALA_VERSION}-${KAFKA_VERSION}
 
 ARG KAFKA_DIST=kafka_${SCALA_VERSION}-${KAFKA_VERSION}
@@ -22,7 +22,7 @@ RUN set -x && \
     mv ${KAFKA_DIST_TGZ} /tmp && \
     tar xfz /tmp/${KAFKA_DIST_TGZ} -C /opt && \
     rm /tmp/${KAFKA_DIST_TGZ} && \
-    apk del unzip curl ca-certificates gnupg
+    apk del unzip ca-certificates gnupg
 
 # Set env
 
