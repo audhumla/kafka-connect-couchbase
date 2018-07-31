@@ -1,7 +1,6 @@
 FROM anapsix/alpine-java:jdk8
 
 # Install kafka
-
 ENV SCALA_VERSION="2.12" \
     KAFKA_VERSION="1.1.0"
 ENV KAFKA_HOME=/opt/kafka_${SCALA_VERSION}-${KAFKA_VERSION}
@@ -24,8 +23,7 @@ RUN set -x && \
     rm /tmp/${KAFKA_DIST_TGZ} && \
     apk del unzip ca-certificates gnupg
 
-# Set env
-
+# Set environment
 ENV PATH=$PATH:/${KAFKA_HOME}/bin \
     CONNECT_CFG=${KAFKA_HOME}/config/connect-standalone.properties \
     CB_CONNECT_CFG=${KAFKA_HOME}/config/connector-config.properties \
@@ -39,11 +37,10 @@ EXPOSE ${JMX_PORT}
 EXPOSE ${CONNECT_PORT}
 
 # Run
-
 WORKDIR $KAFKA_HOME
 COPY target/kafka-connect-couchbase-3.3.2.jar $KAFKA_HOME/connectors
 COPY docker/init.sh $KAFKA_HOME
 COPY docker/start.sh $KAFKA_HOME
 COPY config/connector-config.properties $KAFKA_HOME/config/ 
-ENTRYPOINT "exec" "/$KAFKA_HOME/init.sh"
+ENTRYPOINT "exec" "$KAFKA_HOME/init.sh"
 

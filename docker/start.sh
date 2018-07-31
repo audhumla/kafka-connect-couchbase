@@ -1,8 +1,8 @@
-echo "*************************************************************************************"
-echo "BEGINNING to start the couchbase connector with $CONNECT_BIN $CONNECT_CFG $CB_CONNECT_CFG"
-echo "*************************************************************************************"
+#!/usr/bin/env bash
 
-tag="[start-connect.sh]"
+# default values
+tag="[start.sh]"
+CONNECT_PID=0
 
 function info {
   echo "$tag (INFO) : $1"
@@ -13,12 +13,6 @@ function warn {
 function error {
   echo "$tag (ERROR): $1"
 }
-
-echo "*************************************************************************************"
-echo "About to start the couchbase connector with $CONNECT_BIN $CONNECT_CFG $CB_CONNECT_CFG"
-echo "*************************************************************************************"
-
-CONNECT_PID=0
 
 handleSignal() {
   info 'Stopping... '
@@ -31,12 +25,7 @@ handleSignal() {
 }
 
 trap "handleSignal" SIGHUP SIGINT SIGTERM
-
-echo "==============================================================================="
-echo "Starting the couchbase connector with $CONNECT_BIN $CONNECT_CFG $CB_CONNECT_CFG"
-echo "==============================================================================="
-
+info "Starting the couchbase connector: $CONNECT_BIN $CONNECT_CFG $CB_CONNECT_CFG"
 $CONNECT_BIN $CONNECT_CFG $CB_CONNECT_CFG &
 CONNECT_PID=$!
-
 wait
