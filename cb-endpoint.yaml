@@ -8,7 +8,7 @@
     {
       "addresses": [
         {
-          "ip": "172.16.230.2"
+          "ip": "<cb-cluster-ip>"
         }
       ],
       "ports": [
