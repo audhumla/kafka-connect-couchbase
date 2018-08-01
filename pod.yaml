@@ -5,7 +5,7 @@ metadata:
 spec:
   containers:
     - name: couchbase-kafka-connect-test
-      image: audhumla/couchbase-kafka-connect-test:0.2-test
+      image: audhumla/couchbase-kafka-connect-test:test
       env:
         - name: COUCHBASE_NODES
           value:  "couchbase"

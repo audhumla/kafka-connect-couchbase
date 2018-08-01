@@ -1,9 +1,7 @@
 #!/usr/bin/env bash
 
-CONTAINER_IP=$(tail -1 /etc/hosts | awk '{print $1}')
-
 #Setting environment variables for connector - kafka part
-sed -i "s/localhost/$CONTAINER_IP/" $CONNECT_CFG
+sed -i "s/localhost/$CONNECT_BOOTSTRAP_SERVERS/" $CONNECT_CFG
 
 # Setting environment variables for connector - couchbase part
 sed -i "s/@COUCHBASE_NODES@/$COUCHBASE_NODES/" $CB_CONNECT_CFG
